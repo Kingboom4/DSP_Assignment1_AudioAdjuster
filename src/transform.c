@@ -18,7 +18,7 @@
 #include "..\inc\transform.h"
 #include <dsp.h>
 
-#define FFT_FRAME_SIZE		128
+#define FFT_FRAME_SIZE		256
 
 //variables to store the FFT twiddle factors
 fractcomplex compTwidFactors[FFT_FRAME_SIZE]__attribute__ ((space(xmemory),far));

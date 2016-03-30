@@ -35,7 +35,7 @@
 //#define __DEBUG_SHIFTERS
 //#define __DEBUG_TRANSFORMS
 
-#define FRAME_SIZE 				128
+#define FRAME_SIZE 				256
 #define UPPER_CARRIER_FREQ 		625	
 #define LOWER_CARRIER_FREQ 		62.5
 #define CARRIER_INC				62.5
@@ -96,7 +96,23 @@ int main(void)
 		//work in the frequency domain
 		fourierTransform(FRAME_SIZE,compX,frctAudioIn);
 		filterNegativeFreq(FRAME_SIZE,compXfiltered,compX);
-		shiftFreqSpectrum(FRAME_SIZE,iShiftAmount,compXshifted,compXfiltered);
+		//shiftFreqSpectrum(FRAME_SIZE,iShiftAmount,compXshifted,compXfiltered);
+
+		/* Compute the square magnitude of the complex FFT output array so we have a Real output vetor */
+		SquareMagnitudeCplx(FRAME_SIZE, &compXfiltered[0], &compXfiltered[0].real);
+	
+		/* Find the frequency Bin ( = index into the SigCmpx[] array) that has the largest energy*/
+		/* i.e., the largest spectral component */
+		VectorMax(FRAME_SIZE/2, &compXfiltered[0].real, &peakFrequencyBin);
+	
+		/* Compute the frequency (in Hz) of the largest spectral component */
+		peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);
+		
+		if(peakFrequency > 250){
+			
+		}
+		
+		
 		inverseFourierTransform(FRAME_SIZE,frctAudioOut,compXshifted);
 	
 		//Wait till the OC is available for a new frame
