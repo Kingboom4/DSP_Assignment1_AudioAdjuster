@@ -77,8 +77,12 @@ OCPWMHandle 	ocPWMHandle;
 ADCChannelHandle *pADCChannelHandle 	= &adcChannelHandle;
 OCPWMHandle 	*pOCPWMHandle 		= &ocPWMHandle;
 
+int peakFrequencyBin=0; //Just an initialisation of the variable
+
 int main(void)
 {
+	int peakFrequency; // variable initialisation
+
 	initFilter();
 	
 	ex_sask_init();
@@ -107,9 +111,35 @@ int main(void)
 	
 		/* Compute the frequency (in Hz) of the largest spectral component */
 		peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);
+
+		if(peakFrequency<=800){
+			GREEN_LED=0;
+			RED_LED=1;
+			YELLOW_LED=1;
+		}
 		
-		if(peakFrequency > 250){
-			
+		else if(peakFrequency <= 1600){
+			GREEN_LED=0;
+			RED_LED=1;
+			YELLOW_LED=0;
+		}
+	
+		else if(peakFrequency <= 2400){
+			GREEN_LED=1;
+			RED_LED=1;
+			YELLOW_LED=0;
+		}
+	
+		else if(peakFrequency <= 3200){
+			GREEN_LED=1;
+			RED_LED=0;
+			YELLOW_LED=0;	
+		}
+	
+		else if(peakFrequency <=4000){
+			GREEN_LED=1;
+			RED_LED=0;
+			YELLOW_LED=1;	
 		}
 		
 		
