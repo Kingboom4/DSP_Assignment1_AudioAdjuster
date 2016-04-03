@@ -29,6 +29,7 @@
 #include "..\inc\modulate.h"
 #include "..\inc\complexmultiply.h"
 #include "..\inc\transform.h"
+#include "..\inc\LED_Display.h"
 
 //#define __DEBUG_OVERRIDE_INPUT
 //#define __DEBUG_FILTERS
@@ -36,21 +37,6 @@
 //#define __DEBUG_TRANSFORMS
 
 #define FRAME_SIZE 				256
-#define UPPER_CARRIER_FREQ 		625	
-#define LOWER_CARRIER_FREQ 		62.5
-#define CARRIER_INC				62.5
-#define CARRIER_DEC				62.5
-#define PRESSED					1
-#define UNPRESSED				0
-
-//Modes are used to change the way the device does things, pressing switch 1 changes the mode
-#define MODE_DO_NOTHING			0 //the device passes the audio straight through to the output
-#define MODE_BAND_PASS_FILTER	1 //the device uses the band pass filter to remove negative audio frequencies
-#define MODE_BAND_PASS_SHIFT	3 //the device band pass filters and shifts the audio frequencies
-#define MODE_LOW_PASS_FILTER	2 //the device uses the shifted low pass filter to remove negative audio frequencies
-#define MODE_LOW_PASS_SHIFT		4 //the device uses shifted low pass filters and shifts the audio frequencies
-#define MODE_FREQ_DOMAIN		5 //the device works on the audio signal in the frequency domain
-#define MODE_TOTAL				6
 
 //Allocate memory for input and output buffers
 fractional		adcBuffer		[ADC_CHANNEL_DMA_BUFSIZE] 	__attribute__((space(dma)));
@@ -60,14 +46,12 @@ fractional		ocPWMBuffer		[OCPWM_DMA_BUFSIZE]		__attribute__((space(dma)));
 fractcomplex compx[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 fractcomplex compX[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 fractcomplex compXfiltered[FRAME_SIZE]__attribute__ ((space(ymemory),far));
-fractcomplex compXshifted[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 
 //variables for audio processing
 fractional		frctAudioIn			[FRAME_SIZE]__attribute__ ((space(xmemory),far));
-fractional		frctAudioWorkSpace	[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 fractional		frctAudioOut		[FRAME_SIZE]__attribute__ ((space(xmemory),far));
-fractcomplex	compAudioOut		[FRAME_SIZE]__attribute__ ((space(xmemory),far));
-fractcomplex	compCarrierSignal	[FRAME_SIZE]__attribute__ ((space(ymemory),far));
+
+int peakFrequencyBin=0;
 
 //Instantiate the drivers
 ADCChannelHandle adcChannelHandle;
@@ -77,78 +61,56 @@ OCPWMHandle 	ocPWMHandle;
 ADCChannelHandle *pADCChannelHandle 	= &adcChannelHandle;
 OCPWMHandle 	*pOCPWMHandle 		= &ocPWMHandle;
 
-int peakFrequencyBin=0; //Just an initialisation of the variable
-
 int main(void)
 {
-	int peakFrequency; // variable initialisation
+//	initFilter();
 
-	initFilter();
-	
-	ex_sask_init();
-	
+	ex_sask_init( );
+
 	//Initialise Audio input and output function
 	ADCChannelInit	(pADCChannelHandle,adcBuffer);			
 	OCPWMInit		(pOCPWMHandle,ocPWMBuffer);			
-	
+
 	//Start Audio input and output function
 	ADCChannelStart	(pADCChannelHandle);
 	OCPWMStart		(pOCPWMHandle);	
-
+	
+	int peakFrequency = 0;
 	while(1)
-	{
-		//work in the frequency domain
-		fourierTransform(FRAME_SIZE,compX,frctAudioIn);
-		filterNegativeFreq(FRAME_SIZE,compXfiltered,compX);
-		//shiftFreqSpectrum(FRAME_SIZE,iShiftAmount,compXshifted,compXfiltered);
+	{		
+		#ifndef __DEBUG_OVERRIDE_INPUT//if not in debug mode, read audio in from the ADC
+			//Wait till the ADC has a new frame available
+			while(ADCChannelIsBusy(pADCChannelHandle));
+			//Read in the Audio Samples from the ADC
+			ADCChannelRead	(pADCChannelHandle,frctAudioIn,FRAME_SIZE);
+		#endif
 
-		/* Compute the square magnitude of the complex FFT output array so we have a Real output vetor */
-		SquareMagnitudeCplx(FRAME_SIZE, &compXfiltered[0], &compXfiltered[0].real);
-	
-		/* Find the frequency Bin ( = index into the SigCmpx[] array) that has the largest energy*/
-		/* i.e., the largest spectral component */
-		VectorMax(FRAME_SIZE/2, &compXfiltered[0].real, &peakFrequencyBin);
-	
-		/* Compute the frequency (in Hz) of the largest spectral component */
-		peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);
+				//work in the frequency domain
 
-		if(peakFrequency<=800){
-			GREEN_LED=0;
-			RED_LED=1;
-			YELLOW_LED=1;
-		}
+				fourierTransform(FRAME_SIZE,compX,frctAudioIn);
+				filterNegativeFreq(FRAME_SIZE,compXfiltered,compX);
+//				shiftFreqSpectrum(FRAME_SIZE,iShiftAmount,compXshifted,compXfiltered);
+				
+	
+	//Might need to rethink dividing by 2 for FRAME_SIZE
+
+	SquareMagnitudeCplx(FRAME_SIZE/2, &compXfiltered[0], &compXfiltered[0].real);
+
+	/* Find the frequency Bin ( = index into the SigCmpx[] array) that has the largest energy*/
+	/* i.e., the largest spectral component */
+	VectorMax(FRAME_SIZE/2, &compXfiltered[0].real, &peakFrequencyBin);
+
+	/* Compute the frequency (in Hz) of the largest spectral component */
+	peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);				
+	
+	/* Uses the peak frequency variable to turn on the corresponding LEDs*/
+	turnOnLEDs(peakFrequency);
+
+//				inverseFourierTransform(FRAME_SIZE,frctAudioOut,compXshifted);
+						
 		
-		else if(peakFrequency <= 1600){
-			GREEN_LED=0;
-			RED_LED=1;
-			YELLOW_LED=0;
-		}
-	
-		else if(peakFrequency <= 2400){
-			GREEN_LED=1;
-			RED_LED=1;
-			YELLOW_LED=0;
-		}
-	
-		else if(peakFrequency <= 3200){
-			GREEN_LED=1;
-			RED_LED=0;
-			YELLOW_LED=0;	
-		}
-	
-		else if(peakFrequency <=4000){
-			GREEN_LED=1;
-			RED_LED=0;
-			YELLOW_LED=1;	
-		}
-		
-		
-		inverseFourierTransform(FRAME_SIZE,frctAudioOut,compXshifted);
-	
 		//Wait till the OC is available for a new frame
-		while(OCPWMIsBusy(pOCPWMHandle));	
 		//Write the real part of the frequency shifted complex audio signal to the output
-		OCPWMWrite (pOCPWMHandle,frctAudioOut,FRAME_SIZE);
 		
 	}
 }
