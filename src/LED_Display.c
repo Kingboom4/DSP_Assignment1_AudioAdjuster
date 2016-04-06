@@ -20,14 +20,14 @@
 
 void turnOnLEDs(int peakFrequency){
 	if(peakFrequency<=800){
-		GREEN_LED=0;
-		RED_LED=1;
+		GREEN_LED=1;
+		RED_LED=0;
 		YELLOW_LED=1;
 	}
 	
 	else if(peakFrequency <= 1600){
-		GREEN_LED=0;
-		RED_LED=1;
+		GREEN_LED=1;
+		RED_LED=0;
 		YELLOW_LED=0;
 	}
 
@@ -38,14 +38,14 @@ void turnOnLEDs(int peakFrequency){
 	}
 
 	else if(peakFrequency <= 3200){
-		GREEN_LED=1;
-		RED_LED=0;
+		GREEN_LED=0;
+		RED_LED=1;
 		YELLOW_LED=0;	
 	}
 
 	else if(peakFrequency <=4000){
-		GREEN_LED=1;
-		RED_LED=0;
+		GREEN_LED=0;
+		RED_LED=1;
 		YELLOW_LED=1;	
 	}
 }
