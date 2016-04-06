@@ -43,10 +43,10 @@ void fourierTransform(int iFrameSize,fractcomplex *compX,fractional *frctAudioIn
 	}	
 	
 	//generate the first half of the set of twiddle factors required by the DFT
-	TwidFactorInit (7,compTwidFactors,0);
+	TwidFactorInit (8,compTwidFactors,0);
 
 	//generate the DFT of the audio signal
-	FFTComplex(7,compX,compWorkSpace,compTwidFactors,0xFF00);
+	FFTComplex(8,compX,compWorkSpace,compTwidFactors,0xFE00);
 }
 
 /************************************************************************************************** 
@@ -61,10 +61,10 @@ void inverseFourierTransform(int iFrameSize,fractional *frctAudioWorkSpace,fract
 	int i;
 	
 	//generate the first half of the set of twiddle factors required by the DFT
-	TwidFactorInit (7,compTwidFactors,1);//1 for inverse fourier transform
+	TwidFactorInit (8,compTwidFactors,1);//1 for inverse fourier transform
 
 	//generate the inverse DFT of the audio signals frequency spectrum
-	IFFTComplex(7,compWorkSpace,compX,compTwidFactors,0xFF00);
+	IFFTComplex(8,compWorkSpace,compX,compTwidFactors,0xFE00);
 
 	for(i=0;i<iFrameSize;i++)
 	{
