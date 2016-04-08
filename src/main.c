@@ -31,86 +31,72 @@
 #include "..\inc\transform.h"
 #include "..\inc\LED_Display.h"
 
-//#define __DEBUG_OVERRIDE_INPUT
-//#define __DEBUG_FILTERS
-//#define __DEBUG_SHIFTERS
-//#define __DEBUG_TRANSFORMS
-
 #define FRAME_SIZE 				256
 
-//Allocate memory for input and output buffers
+/*Allocate memory for input and output buffers*/
 fractional		adcBuffer		[ADC_CHANNEL_DMA_BUFSIZE] 	__attribute__((space(dma)));
 fractional		ocPWMBuffer		[OCPWM_DMA_BUFSIZE]		__attribute__((space(dma)));
 
-//variables for FFT
+/*variables for FFT*/
 fractcomplex compx[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 fractcomplex compX[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 fractcomplex compXfiltered[FRAME_SIZE]__attribute__ ((space(ymemory),far));
 
-//variables for audio processing
+/*variables for audio processing*/
 fractional		frctAudioIn			[FRAME_SIZE]__attribute__ ((space(xmemory),far));
 fractional		frctAudioOut		[FRAME_SIZE]__attribute__ ((space(xmemory),far));
 
-int peakFrequencyBin=0;
 
-//Instantiate the drivers
+
+/*Instantiate the drivers*/
 ADCChannelHandle adcChannelHandle;
 OCPWMHandle 	ocPWMHandle;
 
-//Create the driver handles
+/*Create the driver handles*/
 ADCChannelHandle *pADCChannelHandle 	= &adcChannelHandle;
 OCPWMHandle 	*pOCPWMHandle 		= &ocPWMHandle;
 
 int main(void)
 {
-//	initFilter();
-
 	ex_sask_init( );
 
-	//Initialise Audio input and output function
+	/*Initialise Audio input and output function*/
 	ADCChannelInit	(pADCChannelHandle,adcBuffer);			
 	OCPWMInit		(pOCPWMHandle,ocPWMBuffer);			
 
-	//Start Audio input and output function
+	/*Start Audio input and output function*/
 	ADCChannelStart	(pADCChannelHandle);
 	OCPWMStart		(pOCPWMHandle);	
 	
-	int peakFrequency = 0;
+	/*Initialising variables that are needed for calculating the peak frequency*/
+	int peakFrequency=0;
+	int peakFrequencyBin=0;
+	
 	while(1)
 	{		
-		#ifndef __DEBUG_OVERRIDE_INPUT//if not in debug mode, read audio in from the ADC
-			//Wait till the ADC has a new frame available
-			while(ADCChannelIsBusy(pADCChannelHandle));
-			//Read in the Audio Samples from the ADC
-			ADCChannelRead	(pADCChannelHandle,frctAudioIn,FRAME_SIZE);
-		#endif
-
-				//work in the frequency domain
-
-				fourierTransform(FRAME_SIZE,compX,frctAudioIn);
-				filterNegativeFreq(FRAME_SIZE,compXfiltered,compX);
-//				shiftFreqSpectrum(FRAME_SIZE,iShiftAmount,compXshifted,compXfiltered);
-				
-	
-	//Might need to rethink dividing by 2 for FRAME_SIZE
-
-	SquareMagnitudeCplx(FRAME_SIZE/2, &compXfiltered[0], &compXfiltered[0].real);
-
-	/* Find the frequency Bin ( = index into the SigCmpx[] array) that has the largest energy*/
-	/* i.e., the largest spectral component */
-	VectorMax(FRAME_SIZE/2, &compXfiltered[0].real, &peakFrequencyBin);
-
-	/* Compute the frequency (in Hz) of the largest spectral component */
-	peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);				
-	
-	/* Uses the peak frequency variable to turn on the corresponding LEDs*/
-	turnOnLEDs(peakFrequency);
-
-//				inverseFourierTransform(FRAME_SIZE,frctAudioOut,compXshifted);
-						
+		/*Wait till the ADC has a new frame available*/
+		while(ADCChannelIsBusy(pADCChannelHandle));
 		
-		//Wait till the OC is available for a new frame
-		//Write the real part of the frequency shifted complex audio signal to the output
+		/*Read in the Audio Samples from the ADC*/
+		ADCChannelRead	(pADCChannelHandle,frctAudioIn,FRAME_SIZE);
+
+		/*Computing the FFT of the raw signal*/
+		fourierTransform(FRAME_SIZE,compX,frctAudioIn);
 		
+		/*Removing the negative part of the FFT output (imaginary part) by zeroing it out*/
+		filterNegativeFreq(FRAME_SIZE,compXfiltered,compX);
+	
+		/*Compute the square magnitude of the complex FFT output array so we have a Real output vetor*/
+		SquareMagnitudeCplx(FRAME_SIZE/2, &compXfiltered[0], &compXfiltered[0].real);
+
+		/*Find the frequency Bin ( = index into the SigCmpx[] array) that has the largest energy*/
+		/*i.e., the largest spectral component*/
+		VectorMax(FRAME_SIZE/2, &compXfiltered[0].real, &peakFrequencyBin);
+
+		/*Compute the frequency (in Hz) of the largest spectral component*/
+		peakFrequency = peakFrequencyBin*(8000/FRAME_SIZE);				
+	
+		/*Uses the peak frequency variable to turn on the corresponding LEDs*/
+		turnOnLEDs(peakFrequency);
 	}
 }
