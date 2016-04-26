@@ -49,7 +49,7 @@ fractcomplex compXfiltered[FRAME_SIZE]__attribute__((space(ymemory), far));
 
 /*variables for audio processing*/
 fractional frctAudioIn [FRAME_SIZE]__attribute__((space(xmemory), far));
-fractional frctAudioOut [FRAME_SIZE]__attribute__((space(xmemory), far));
+fractional frctAudioOut [(FRAME_SIZE)*5]__attribute__((space(ymemory), far));
 
 
 
@@ -107,36 +107,123 @@ int main(void) {
         /*Uses the peak frequency variable to turn on the corresponding LEDs*/
         turnOnLEDs(peakFrequency);
 
-                if (peakFrequency >= 800) {
-        
-                    if (peakFrequency <= 1600) {
-                        int debugFrequency = 500;
-                        createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-                    } else if (peakFrequency <= 2400) {
-                        int debugFrequency = 800;
-                        createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-                    } else if (peakFrequency <= 3200) {
-                        int debugFrequency = 1000;
-                        createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-                    } else if (peakFrequency <= 4000) {
-                        int debugFrequency = 1500;
-                        createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-                    }
-                } else {
+
+
+        //  if(CheckSwitchS1() == PRESSED){
+        //            int i=0;
+        //            for(i;i<(FRAME_SIZE)*2;i++){
+        //                if(i>=FRAME_SIZE){
+        //                    int j = i-FRAME_SIZE;
+        //                    frctAudioOut[i] = frctAudioIn[j];
+        //                }
+        //                else{
+        //                    frctAudioOut[i] = frctAudioIn[i];
+        //                }
+        //            }
+        //            
+
+
+        //            frctAudioOut[i] = frctAudioIn[i];
+        //    }
+
+        //        int debugFrequency = 500;
+        //        createSimpleSignal(debugFrequency,FRAME_SIZE,frctAudioOut);	
+        //GREEN_LED=0;
+
+        if (CheckSwitchS1() == PRESSED) {
+            if (switchState == 0) {
+                //                int debugFrequency = 500;
+                //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
+
+                if (firstPartExecutedDecision == 0) {
                     int i = 0;
+
                     for (i; i < FRAME_SIZE; i++) {
-                        frctAudioOut[i] = 0;
+                        frctAudioOut[i] = frctAudioIn[i]*0.5;
                     }
-        
+                    firstPartExecutedDecision = 1;
                 }
 
-//                int i = 0;
-//                for (i; i < FRAME_SIZE; i++) {
-//                    frctAudioOut[i] = frctAudioOut[i];
-//                }
+                if (firstPartExecutedDecision == 1) {
+                    int i = FRAME_SIZE;
+                    int iFrameSize = 0;
+                    for (i; i < (FRAME_SIZE)*2; i++) {
+                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                        iFrameSize++;
+                    }
+                    firstPartExecutedDecision = 2;
+                }
+
+                if (firstPartExecutedDecision == 2) {
+                    int i = (FRAME_SIZE)*2;
+                    int iFrameSize = 0;
+                    for (i; i < (FRAME_SIZE)*3; i++) {
+                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                        iFrameSize++;
+                    }
+                    firstPartExecutedDecision = 3;
+                }
+
+                if (firstPartExecutedDecision == 3) {
+                    int i = (FRAME_SIZE)*3;
+                    int iFrameSize = 0;
+                    for (i; i < (FRAME_SIZE)*4; i++) {
+                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                        iFrameSize++;
+                    }
+                    firstPartExecutedDecision = 4;
+                }
+
+                if (firstPartExecutedDecision == 4) {
+                    int i = (FRAME_SIZE)*4;
+                    int iFrameSize = 0;
+                    for (i; i < (FRAME_SIZE)*5; i++) {
+                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                        iFrameSize++;
+                    }
+                    firstPartExecutedDecision = -1;
+                    switchState = 1;
+                }
+            } else if (switchState == 1) {
+                int i = 0;
+                for (i; i < (FRAME_SIZE)*5; i++) {
+                    frctAudioOut[i] = 0;
+                }
+                switchState = 0;
+                firstPartExecutedDecision = 0;
+            }
+        }
+
+        //        if (peakFrequency >= 800) {
+        //
+        //            if (peakFrequency <= 1600) {
+        //                int debugFrequency = 500;
+        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
+        //            } else if (peakFrequency <= 2400) {
+        //                int debugFrequency = 800;
+        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
+        //            } else if (peakFrequency <= 3200) {
+        //                int debugFrequency = 1000;
+        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
+        //            } else if (peakFrequency <= 4000) {
+        //                int debugFrequency = 1500;
+        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
+        //            }
+        //        } else {
+        //            int i = 0;
+        //            for (i; i < FRAME_SIZE; i++) {
+        //                frctAudioOut[i] = 0;
+        //            }
+        //
+        //        }
+
+        //        int i = 0;
+        //        for (i; i < FRAME_SIZE; i++) {
+        //            frctAudioOut[i] = frctAudioOut[i];
+        //        }
 
         while (OCPWMIsBusy(pOCPWMHandle));
-        OCPWMWrite(pOCPWMHandle, frctAudioOut, FRAME_SIZE);
+        OCPWMWrite(pOCPWMHandle, frctAudioOut, (FRAME_SIZE)*5);
 
 
         //        int i=0;
