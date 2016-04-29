@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv3_31 (A) ?
+Microchip Technology Inc, vv3_31 (A) T
 
 Tool Name:
   c:\program files (x86)\microchip\mplab c30\bin\bin\..\bin/pic30-coff-ld.exe
@@ -86,14 +86,16 @@ c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(dat
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a(crt0_standard.o) (_data_init_standard)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsi3.o)
                               build/default/debug/_ext/464410576/OCPWMDrv.o (__divsi3)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
+                              build/default/debug/src/main.o (__floatsisf)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
+                              build/default/debug/src/main.o (__mulsf3)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
+                              build/default/debug/src/main.o (__fixsfsi)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
                               build/default/debug/src/modulate.o (__divsf3)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
                               C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (__subsf3)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
-                              build/default/debug/src/modulate.o (__mulsf3)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
-                              build/default/debug/src/modulate.o (__floatsisf)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o)
                               build/default/debug/src/modulate.o (cosf)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sinf.o)
@@ -102,8 +104,6 @@ c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o
                               C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (__gtsf2)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o)
                               C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (floorf)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
-                              C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (__fixsfsi)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
                               C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (__eqsf2)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(ceilf.o)
@@ -112,20 +112,20 @@ c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fne.o)
                               C:\Program Files (x86)\Microchip\MPLAB C30\lib\libdsp-coff.a(flt2frct.o) (__nesf2)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(udivsi3.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsi3.o) (__udivsi3)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
-                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o) (_funpack2)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
-                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o) (_fPropagateNaN)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
-                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o) (_fpack)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o) (_fpack)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o) (_funpack2)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o) (_fPropagateNaN)
+c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
+                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o) (_funpack)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o) (_sincosf)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o) (_fcompare)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fchop.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o) (_fchop)
-c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
-                              c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o) (_funpack)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(errno.o)
                               c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o) (errno)
 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fmodf.o)
@@ -157,9 +157,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 .const                       0xc16                 0x4             0x6  (6)
 .text                        0xc1a               0x54a           0x7ef  (2031)
 .dinit                      0x1164               0x16e           0x225  (549)
-.text                       0x12d2               0x602           0x903  (2307)
+.text                       0x12d2               0x6dc           0xa4a  (2634)
 
-                     Total program memory used (bytes):         0x223e  (8766) 3%
+                     Total program memory used (bytes):         0x2385  (9093) 3%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -175,8 +175,8 @@ section                    address      alignment gaps    total length  (dec)
 .ybss                       0x3344                   0            0xbc  (188)
 .ybss                       0x3400                   0           0x400  (1024)
 .ybss                       0x3800                   0           0xc00  (3072)
-_02772d90571f98de           0x4400                   0           0x200  (512)
-_02772c40571f98de           0x4600                   0           0x200  (512)
+_028cd85057227bbd           0x4400                   0           0x200  (512)
+_028cd70057227bbd           0x4600                   0           0x200  (512)
 
                         Total data memory used (bytes):         0x2aa0  (10912) 66%
 
@@ -269,36 +269,36 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000222                  __psv_init
-                  0x000232                  __data_init_standard
                   0x000232                  __data_init
+                  0x000232                  __data_init_standard
                   0x000290                  __DefaultInterrupt
                   0x000294                  ___divsi3
-                  0x0002b2                  ___divsf3
-                  0x000336                  ___subsf3
-                  0x000338                  ___addsf3
-                  0x0003f2                  ___mulsf3
-                  0x00045a                  ___floatsisf
-                  0x0004b0                  _cosf
-                  0x0004b4                  _sinf
-                  0x0004b8                  ___gtsf2
-                  0x0004b8                  ___gesf2
-                  0x0004bc                  _floorf
-                  0x0004cc                  ___fixsfsi
+                  0x0002b2                  ___floatsisf
+                  0x000308                  ___mulsf3
+                  0x000370                  ___fixsfsi
+                  0x0003b2                  ___divsf3
+                  0x000436                  ___subsf3
+                  0x000438                  ___addsf3
+                  0x0004f2                  _cosf
+                  0x0004f6                  _sinf
+                  0x0004fa                  ___gesf2
+                  0x0004fa                  ___gtsf2
+                  0x0004fe                  _floorf
+                  0x00050e                  ___eqsf2
                   0x00050e                  ___lesf2
                   0x00050e                  ___ltsf2
-                  0x00050e                  ___eqsf2
                   0x000512                  _ceilf
                   0x000522                  ___nesf2
                   0x000526                  ___udivsi3
-                  0x000546                  __funpack2
-                  0x000556                  __fPropagateNaN
-                  0x000568                  __fbopExit
-                  0x000570                  __fbopReturnNaN
-                  0x000576                  __fpack
-                  0x0005c2                  __sincosf
-                  0x000694                  __fcompare
-                  0x0006ca                  __fchop
-                  0x000718                  __funpack
+                  0x000546                  __fpack
+                  0x000592                  __funpack2
+                  0x0005a2                  __fPropagateNaN
+                  0x0005b4                  __fbopExit
+                  0x0005bc                  __fbopReturnNaN
+                  0x0005c2                  __funpack
+                  0x0005ec                  __sincosf
+                  0x0006be                  __fcompare
+                  0x0006f4                  __fchop
                   0x000742                  _fmodf
                   0x000746                  __fmodrem
                   0x0007e4                  _Float2Fract
@@ -332,35 +332,35 @@ External Symbols in Program Memory (by address):
                   0x00110e                  _led_select
                   0x0012d2                  _complexVectorMultiply
                   0x0013bc                  _combinationVectorMultiply
-                  0x001432                  _ADCChannelInit
-                  0x0014ba                  _ADCChannelStart
-                  0x0014d8                  _ADCChannelStop
-                  0x0014e8                  _ADCChannelRead
-                  0x00154a                  _ADCChannelIsBusy
-                  0x001556                  __DMA0Interrupt
-                  0x001572                  _createComplexSignal
-                  0x001618                  _createSimpleSignal
-                  0x00169c                  _initFilter
-                  0x00172c                  _bandPassFilter
-                  0x001742                  _shiftedLowPassFilter
-                  0x001758                  _SASKInit
-                  0x00177e                  _CheckSwitchS1
-                  0x0017a8                  _CheckSwitchS2
-                  0x0017d2                  _main
-                  0x00183c                  _ex_sask_init
-                  0x001888                  _turnOnLEDs
+                  0x001432                  _main
+                  0x001576                  _ADCChannelInit
+                  0x0015fe                  _ADCChannelStart
+                  0x00161c                  _ADCChannelStop
+                  0x00162c                  _ADCChannelRead
+                  0x00168e                  _ADCChannelIsBusy
+                  0x00169a                  __DMA0Interrupt
+                  0x0016b6                  _createComplexSignal
+                  0x00175c                  _createSimpleSignal
+                  0x0017e0                  _initFilter
+                  0x001870                  _bandPassFilter
+                  0x001886                  _shiftedLowPassFilter
+                  0x00189c                  _SASKInit
+                  0x0018c2                  _CheckSwitchS1
+                  0x0018ec                  _CheckSwitchS2
+                  0x001916                  _ex_sask_init
+                  0x001962                  _turnOnLEDs
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001432                  _ADCChannelInit
-                  0x00154a                  _ADCChannelIsBusy
-                  0x0014e8                  _ADCChannelRead
-                  0x0014ba                  _ADCChannelStart
-                  0x0014d8                  _ADCChannelStop
+                  0x001576                  _ADCChannelInit
+                  0x00168e                  _ADCChannelIsBusy
+                  0x00162c                  _ADCChannelRead
+                  0x0015fe                  _ADCChannelStart
+                  0x00161c                  _ADCChannelStop
                   0x000bca                  _BitReverseComplex
-                  0x00177e                  _CheckSwitchS1
-                  0x0017a8                  _CheckSwitchS2
+                  0x0018c2                  _CheckSwitchS1
+                  0x0018ec                  _CheckSwitchS2
                   0x000b04                  _FFTComplex
                   0x000b4a                  _FFTComplexIP
                   0x000932                  _FIR
@@ -374,68 +374,68 @@ External Symbols in Program Memory (by name):
                   0x000e46                  _OCPWMStart
                   0x000e84                  _OCPWMStop
                   0x000e92                  _OCPWMWrite
-                  0x001758                  _SASKInit
+                  0x00189c                  _SASKInit
                   0x0009ae                  _SquareMagnitudeCplx
                   0x000a30                  _TwidFactorInit
                   0x000a12                  _VectorAdd
                   0x000b3e                  _VectorCopy
                   0x0009dc                  _VectorMax
                   0x0009f6                  _VectorMultiply
-                  0x001556                  __DMA0Interrupt
+                  0x00169a                  __DMA0Interrupt
                   0x000f48                  __DMA1Interrupt
                   0x000290                  __DefaultInterrupt
                   0xf80004                  __FGS.sec
-                  0x000338                  ___addsf3
-                  0x0002b2                  ___divsf3
+                  0x000438                  ___addsf3
+                  0x0003b2                  ___divsf3
                   0x000294                  ___divsi3
                   0x00050e                  ___eqsf2
-                  0x0004cc                  ___fixsfsi
-                  0x00045a                  ___floatsisf
-                  0x0004b8                  ___gesf2
-                  0x0004b8                  ___gtsf2
+                  0x000370                  ___fixsfsi
+                  0x0002b2                  ___floatsisf
+                  0x0004fa                  ___gesf2
+                  0x0004fa                  ___gtsf2
                   0x00050e                  ___lesf2
                   0x00050e                  ___ltsf2
-                  0x0003f2                  ___mulsf3
+                  0x000308                  ___mulsf3
                   0x000522                  ___nesf2
-                  0x000336                  ___subsf3
+                  0x000436                  ___subsf3
                   0x000526                  ___udivsi3
                   0x000232                  __data_init
                   0x000232                  __data_init_standard
-                  0x000556                  __fPropagateNaN
-                  0x000568                  __fbopExit
-                  0x000570                  __fbopReturnNaN
-                  0x0006ca                  __fchop
-                  0x000694                  __fcompare
+                  0x0005a2                  __fPropagateNaN
+                  0x0005b4                  __fbopExit
+                  0x0005bc                  __fbopReturnNaN
+                  0x0006f4                  __fchop
+                  0x0006be                  __fcompare
                   0x000746                  __fmodrem
-                  0x000576                  __fpack
-                  0x000718                  __funpack
-                  0x000546                  __funpack2
+                  0x000546                  __fpack
+                  0x0005c2                  __funpack
+                  0x000592                  __funpack2
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x0005c2                  __sincosf
-                  0x00172c                  _bandPassFilter
+                  0x0005ec                  __sincosf
+                  0x001870                  _bandPassFilter
                   0x000512                  _ceilf
                   0x0013bc                  _combinationVectorMultiply
                   0x0012d2                  _complexVectorMultiply
-                  0x0004b0                  _cosf
-                  0x001572                  _createComplexSignal
-                  0x001618                  _createSimpleSignal
-                  0x00183c                  _ex_sask_init
+                  0x0004f2                  _cosf
+                  0x0016b6                  _createComplexSignal
+                  0x00175c                  _createSimpleSignal
+                  0x001916                  _ex_sask_init
                   0x000cb0                  _filterNegativeFreq
-                  0x0004bc                  _floorf
+                  0x0004fe                  _floorf
                   0x000742                  _fmodf
                   0x000c1a                  _fourierTransform
-                  0x00169c                  _initFilter
+                  0x0017e0                  _initFilter
                   0x000c6c                  _inverseFourierTransform
                   0x001018                  _led_off
                   0x000fb2                  _led_on
                   0x00110e                  _led_select
                   0x00107e                  _led_switch
-                  0x0017d2                  _main
+                  0x001432                  _main
                   0x000d38                  _shiftFreqSpectrum
-                  0x001742                  _shiftedLowPassFilter
-                  0x0004b4                  _sinf
-                  0x001888                  _turnOnLEDs
+                  0x001886                  _shiftedLowPassFilter
+                  0x0004f6                  _sinf
+                  0x001962                  _turnOnLEDs
 
 Memory Configuration
 
@@ -522,26 +522,26 @@ LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp3
  *(.libm)
  .libm            0x000294         0x1e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsi3.o)
                   0x000294                  __divsi3
- .libm            0x0002b2         0x84 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
-                  0x0002b2                  __divsf3
- .libm            0x000336         0xbc c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
-                  0x000336                  __subsf3
-                  0x000338                  __addsf3
- .libm            0x0003f2         0x68 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
-                  0x0003f2                  __mulsf3
- .libm            0x00045a         0x56 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
-                  0x00045a                  __floatsisf
- .libm            0x0004b0          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o)
-                  0x0004b0                  cosf
- .libm            0x0004b4          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sinf.o)
-                  0x0004b4                  sinf
- .libm            0x0004b8          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o)
-                  0x0004b8                  __gesf2
-                  0x0004b8                  __gtsf2
- .libm            0x0004bc         0x10 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o)
-                  0x0004bc                  floorf
- .libm            0x0004cc         0x42 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
-                  0x0004cc                  __fixsfsi
+ .libm            0x0002b2         0x56 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
+                  0x0002b2                  __floatsisf
+ .libm            0x000308         0x68 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
+                  0x000308                  __mulsf3
+ .libm            0x000370         0x42 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
+                  0x000370                  __fixsfsi
+ .libm            0x0003b2         0x84 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
+                  0x0003b2                  __divsf3
+ .libm            0x000436         0xbc c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
+                  0x000436                  __subsf3
+                  0x000438                  __addsf3
+ .libm            0x0004f2          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o)
+                  0x0004f2                  cosf
+ .libm            0x0004f6          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sinf.o)
+                  0x0004f6                  sinf
+ .libm            0x0004fa          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o)
+                  0x0004fa                  __gesf2
+                  0x0004fa                  __gtsf2
+ .libm            0x0004fe         0x10 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o)
+                  0x0004fe                  floorf
  .libm            0x00050e          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
                   0x00050e                  __eqsf2
                   0x00050e                  __ltsf2
@@ -552,22 +552,22 @@ LOAD c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib/dsPIC33F\libp3
                   0x000522                  __nesf2
  .libm            0x000526         0x20 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(udivsi3.o)
                   0x000526                  __udivsi3
- .libm            0x000546         0x10 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
-                  0x000546                  _funpack2
- .libm            0x000556         0x20 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
-                  0x000556                  _fPropagateNaN
-                  0x000568                  _fbopExit
-                  0x000570                  _fbopReturnNaN
- .libm            0x000576         0x4c c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
-                  0x000576                  _fpack
- .libm            0x0005c2         0xd2 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o)
-                  0x0005c2                  _sincosf
- .libm            0x000694         0x36 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
-                  0x000694                  _fcompare
- .libm            0x0006ca         0x4e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fchop.o)
-                  0x0006ca                  _fchop
- .libm            0x000718         0x2a c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
-                  0x000718                  _funpack
+ .libm            0x000546         0x4c c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
+                  0x000546                  _fpack
+ .libm            0x000592         0x10 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
+                  0x000592                  _funpack2
+ .libm            0x0005a2         0x20 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
+                  0x0005a2                  _fPropagateNaN
+                  0x0005b4                  _fbopExit
+                  0x0005bc                  _fbopReturnNaN
+ .libm            0x0005c2         0x2a c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
+                  0x0005c2                  _funpack
+ .libm            0x0005ec         0xd2 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o)
+                  0x0005ec                  _sincosf
+ .libm            0x0006be         0x36 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
+                  0x0006be                  _fcompare
+ .libm            0x0006f4         0x4e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fchop.o)
+                  0x0006f4                  _fchop
  .libm            0x000742          0x4 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fmodf.o)
                   0x000742                  fmodf
  .libm            0x000746         0x9e c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fmodrem.o)
@@ -700,7 +700,7 @@ __FUID3
                   0x000016          0x4 LONG 0x290 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x290 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001a          0x4 LONG 0x290 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001c          0x4 LONG 0x1556 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001c          0x4 LONG 0x169a DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x290 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x290 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000022          0x4 LONG 0x290 DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -828,7 +828,7 @@ __FUID3
                   0x000116          0x4 LONG 0x290 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x290 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011a          0x4 LONG 0x290 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011c          0x4 LONG 0x1556 DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011c          0x4 LONG 0x169a DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x290 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x290 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000122          0x4 LONG 0x290 DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1985,23 +1985,23 @@ __c30_signature
  __c30_signature
                   0x0000a8          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsi3.o)
  __c30_signature
-                  0x0000ae          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
+                  0x0000ae          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
  __c30_signature
-                  0x0000b4          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
+                  0x0000b4          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
  __c30_signature
-                  0x0000ba          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(mulsf3.o)
+                  0x0000ba          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
  __c30_signature
-                  0x0000c0          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floatsisf.o)
+                  0x0000c0          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(divsf3.o)
  __c30_signature
-                  0x0000c6          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o)
+                  0x0000c6          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(addsf3.o)
  __c30_signature
-                  0x0000cc          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sinf.o)
+                  0x0000cc          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(cosf.o)
  __c30_signature
-                  0x0000d2          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o)
+                  0x0000d2          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sinf.o)
  __c30_signature
-                  0x0000d8          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o)
+                  0x0000d8          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fgtge.o)
  __c30_signature
-                  0x0000de          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fixsfsi.o)
+                  0x0000de          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(floorf.o)
  __c30_signature
                   0x0000e4          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(feqltle.o)
  __c30_signature
@@ -2011,19 +2011,19 @@ __c30_signature
  __c30_signature
                   0x0000f6          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(udivsi3.o)
  __c30_signature
-                  0x0000fc          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
+                  0x0000fc          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
  __c30_signature
-                  0x000102          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
+                  0x000102          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack2.o)
  __c30_signature
-                  0x000108          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fpack.o)
+                  0x000108          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(futil.o)
  __c30_signature
-                  0x00010e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o)
+                  0x00010e          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
  __c30_signature
-                  0x000114          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
+                  0x000114          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(sincosf.o)
  __c30_signature
-                  0x00011a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fchop.o)
+                  0x00011a          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fcompare.o)
  __c30_signature
-                  0x000120          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(funpack.o)
+                  0x000120          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fchop.o)
  __c30_signature
                   0x000126          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(errno.o)
  __c30_signature
@@ -2031,15 +2031,15 @@ __c30_signature
  __c30_signature
                   0x000132          0x6 c:/program files (x86)/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(fmodrem.o)
 
-_02772c40571f98de
+_028cd70057227bbd
                     0x4600        0x200
- _02772c40571f98de
+ _028cd70057227bbd
                     0x4600        0x200 build/default/debug/src/main.o
                     0x4600                  adcBuffer
 
-_02772d90571f98de
+_028cd85057227bbd
                     0x4400        0x200
- _02772d90571f98de
+ _028cd85057227bbd
                     0x4400        0x200 build/default/debug/src/main.o
                     0x4400                  ocPWMBuffer
 
@@ -2133,31 +2133,31 @@ _02772d90571f98de
 .dinit            0x001164        0x16e
  .dinit           0x001164        0x16e data_init
 
-.text             0x0012d2        0x602
+.text             0x0012d2        0x6dc
  .text            0x0012d2        0x160 build/default/debug/src/complexmultiply.o
                   0x0012d2                  complexVectorMultiply
                   0x0013bc                  combinationVectorMultiply
- .text            0x001432        0x140 build/default/debug/_ext/1445252982/ADCChannelDrv.o
-                  0x001432                  ADCChannelInit
-                  0x0014ba                  ADCChannelStart
-                  0x0014d8                  ADCChannelStop
-                  0x0014e8                  ADCChannelRead
-                  0x00154a                  ADCChannelIsBusy
-                  0x001556                  _DMA0Interrupt
- .text            0x001572        0x12a build/default/debug/src/modulate.o
-                  0x001572                  createComplexSignal
-                  0x001618                  createSimpleSignal
- .text            0x00169c         0xbc build/default/debug/src/filter.o
-                  0x00169c                  initFilter
-                  0x00172c                  bandPassFilter
-                  0x001742                  shiftedLowPassFilter
- .text            0x001758         0x7a build/default/debug/_ext/1066792872/sask.o
-                  0x001758                  SASKInit
-                  0x00177e                  CheckSwitchS1
-                  0x0017a8                  CheckSwitchS2
- .text            0x0017d2         0x6a build/default/debug/src/main.o
-                  0x0017d2                  main
- .text            0x00183c         0x4c build/default/debug/_ext/1673978214/ex_sask_generic.o
-                  0x00183c                  ex_sask_init
- .text            0x001888         0x4c build/default/debug/src/LED_Display.o
-                  0x001888                  turnOnLEDs
+ .text            0x001432        0x144 build/default/debug/src/main.o
+                  0x001432                  main
+ .text            0x001576        0x140 build/default/debug/_ext/1445252982/ADCChannelDrv.o
+                  0x001576                  ADCChannelInit
+                  0x0015fe                  ADCChannelStart
+                  0x00161c                  ADCChannelStop
+                  0x00162c                  ADCChannelRead
+                  0x00168e                  ADCChannelIsBusy
+                  0x00169a                  _DMA0Interrupt
+ .text            0x0016b6        0x12a build/default/debug/src/modulate.o
+                  0x0016b6                  createComplexSignal
+                  0x00175c                  createSimpleSignal
+ .text            0x0017e0         0xbc build/default/debug/src/filter.o
+                  0x0017e0                  initFilter
+                  0x001870                  bandPassFilter
+                  0x001886                  shiftedLowPassFilter
+ .text            0x00189c         0x7a build/default/debug/_ext/1066792872/sask.o
+                  0x00189c                  SASKInit
+                  0x0018c2                  CheckSwitchS1
+                  0x0018ec                  CheckSwitchS2
+ .text            0x001916         0x4c build/default/debug/_ext/1673978214/ex_sask_generic.o
+                  0x001916                  ex_sask_init
+ .text            0x001962         0x4c build/default/debug/src/LED_Display.o
+                  0x001962                  turnOnLEDs

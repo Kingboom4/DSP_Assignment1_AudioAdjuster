@@ -3,13 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/H:/CI7020/Source_Tree/MicroChip/libs/board/h/sask.h</file>
             <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/LED_Display.h</file>
             <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/nbproject/Makefile-impl.mk</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/transform.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/modulate.h</file>
+            <file>file:/H:/CI7020/Source_Tree/MicroChip/libs/dsp/h/dsp.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/filter.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/nbproject/Makefile-default.mk</file>
+            <file>file:/H:/CI7020/Source_Tree/MicroChip/libs/peripherals/pwm/h/OCPWMDrv.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/libs/board/inc/ex_sask_generic.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/libs/board/src/ex_sask_led.c</file>
             <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/src/main.c</file>
             <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/src/LED_Display.c</file>
-            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/modulate.h</file>
-            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/nbproject/Makefile-default.mk</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/inc/complexmultiply.h</file>
+            <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/src/complexmultiply.c</file>
             <file>file:/H:/CI7020/Source_Tree/user/apps/AudioAdjuster/src/modulate.c</file>
+            <file>file:/H:/CI7020/Source_Tree/user/libs/board/inc/ex_sask_led.h</file>
+            <file>file:/H:/CI7020/Source_Tree/MicroChip/libs/peripherals/adc/h/ADCChannelDrv.h</file>
         </group>
     </open-files>
 </project-private>

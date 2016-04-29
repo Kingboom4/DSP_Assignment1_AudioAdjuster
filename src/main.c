@@ -49,7 +49,7 @@ fractcomplex compXfiltered[FRAME_SIZE]__attribute__((space(ymemory), far));
 
 /*variables for audio processing*/
 fractional frctAudioIn [FRAME_SIZE]__attribute__((space(xmemory), far));
-fractional frctAudioOut [(FRAME_SIZE)*5]__attribute__((space(ymemory), far));
+fractional frctAudioOut [FRAME_SIZE]__attribute__((space(xmemory), far));
 
 
 
@@ -60,6 +60,15 @@ OCPWMHandle ocPWMHandle;
 /*Create the driver handles*/
 ADCChannelHandle *pADCChannelHandle = &adcChannelHandle;
 OCPWMHandle *pOCPWMHandle = &ocPWMHandle;
+
+/* Function declarations */
+void startRecording();
+void playPureSignal(int);
+
+int switchState = 0;
+int switchState2 = 0;
+int stateVariableForPitchDetection = 0;
+int firstPartExecutedDecision = 0;
 
 int main(void) {
     ex_sask_init();
@@ -75,11 +84,6 @@ int main(void) {
     /*Initialising variables that are needed for calculating the peak frequency*/
     int peakFrequency = 0;
     int peakFrequencyBin = 0;
-
-    int switchState = 0;
-    int stateVariableForPitchDetection = 0;
-
-    int firstPartExecutedDecision = 0;
 
     while (1) {
         /*Wait till the ADC has a new frame available*/
@@ -107,83 +111,10 @@ int main(void) {
         /*Uses the peak frequency variable to turn on the corresponding LEDs*/
         turnOnLEDs(peakFrequency);
 
-
-
-        //  if(CheckSwitchS1() == PRESSED){
-        //            int i=0;
-        //            for(i;i<(FRAME_SIZE)*2;i++){
-        //                if(i>=FRAME_SIZE){
-        //                    int j = i-FRAME_SIZE;
-        //                    frctAudioOut[i] = frctAudioIn[j];
-        //                }
-        //                else{
-        //                    frctAudioOut[i] = frctAudioIn[i];
-        //                }
-        //            }
-        //            
-
-
-        //            frctAudioOut[i] = frctAudioIn[i];
-        //    }
-
-        //        int debugFrequency = 500;
-        //        createSimpleSignal(debugFrequency,FRAME_SIZE,frctAudioOut);	
-        //GREEN_LED=0;
-
+        /* Used for checking whether the user wants to record */
         if (CheckSwitchS1() == PRESSED) {
             if (switchState == 0) {
-                //                int debugFrequency = 500;
-                //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-
-                if (firstPartExecutedDecision == 0) {
-                    int i = 0;
-
-                    for (i; i < FRAME_SIZE; i++) {
-                        frctAudioOut[i] = frctAudioIn[i]*0.5;
-                    }
-                    firstPartExecutedDecision = 1;
-                }
-
-                if (firstPartExecutedDecision == 1) {
-                    int i = FRAME_SIZE;
-                    int iFrameSize = 0;
-                    for (i; i < (FRAME_SIZE)*2; i++) {
-                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
-                        iFrameSize++;
-                    }
-                    firstPartExecutedDecision = 2;
-                }
-
-                if (firstPartExecutedDecision == 2) {
-                    int i = (FRAME_SIZE)*2;
-                    int iFrameSize = 0;
-                    for (i; i < (FRAME_SIZE)*3; i++) {
-                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
-                        iFrameSize++;
-                    }
-                    firstPartExecutedDecision = 3;
-                }
-
-                if (firstPartExecutedDecision == 3) {
-                    int i = (FRAME_SIZE)*3;
-                    int iFrameSize = 0;
-                    for (i; i < (FRAME_SIZE)*4; i++) {
-                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
-                        iFrameSize++;
-                    }
-                    firstPartExecutedDecision = 4;
-                }
-
-                if (firstPartExecutedDecision == 4) {
-                    int i = (FRAME_SIZE)*4;
-                    int iFrameSize = 0;
-                    for (i; i < (FRAME_SIZE)*5; i++) {
-                        frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
-                        iFrameSize++;
-                    }
-                    firstPartExecutedDecision = -1;
-                    switchState = 1;
-                }
+                //startRecording(); Code works, but doesn't record much, only a fraction of a second
             } else if (switchState == 1) {
                 int i = 0;
                 for (i; i < (FRAME_SIZE)*5; i++) {
@@ -193,47 +124,123 @@ int main(void) {
                 firstPartExecutedDecision = 0;
             }
         }
+        
+        /* Switch two is just used to toggle between different modes */
+        if (CheckSwitchS2() == PRESSED) {
+            if (switchState2 == 0) {
+                switchState2 = 1;
+            } else if (switchState2 == 1) {
+                switchState2 = 2;
+            } else if (switchState2 == 2) {
+                switchState2 = 0;
+            }
+        }
+        
+        /* Checking whether the peak frequency is above 800 and if so calling the function playPureSignal() */
+        if (peakFrequency >= 800) {
+            playPureSignal(peakFrequency);
+        } else if (switchState2 != 2) {
+            int i = 0;
+            for (i; i < FRAME_SIZE; i++) {
+                if (switchState2 == 0) {
+                    frctAudioOut[i] = frctAudioIn[i]; //Used for the mode that allows for outputting of the original signal
+                } else if (switchState2 == 1) {
+                    frctAudioOut[i] = 0; //Used for the mode that requests silence if the threshold has not been met
+                }
+            }
+        }
 
-        //        if (peakFrequency >= 800) {
-        //
-        //            if (peakFrequency <= 1600) {
-        //                int debugFrequency = 500;
-        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-        //            } else if (peakFrequency <= 2400) {
-        //                int debugFrequency = 800;
-        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-        //            } else if (peakFrequency <= 3200) {
-        //                int debugFrequency = 1000;
-        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-        //            } else if (peakFrequency <= 4000) {
-        //                int debugFrequency = 1500;
-        //                createSimpleSignal(debugFrequency, FRAME_SIZE, frctAudioOut);
-        //            }
-        //        } else {
-        //            int i = 0;
-        //            for (i; i < FRAME_SIZE; i++) {
-        //                frctAudioOut[i] = 0;
-        //            }
-        //
-        //        }
-
-        //        int i = 0;
-        //        for (i; i < FRAME_SIZE; i++) {
-        //            frctAudioOut[i] = frctAudioOut[i];
-        //        }
-
+        if (switchState2 == 2) {
+            int i = 0;
+            for (i; i < FRAME_SIZE; i++) {
+                frctAudioOut[i] = 0;
+            }
+        }
+        
+        /* Outputting the pure signal or original sound or silence, depending on what's inside frctAudioOut*/
         while (OCPWMIsBusy(pOCPWMHandle));
-        OCPWMWrite(pOCPWMHandle, frctAudioOut, (FRAME_SIZE)*5);
+        OCPWMWrite(pOCPWMHandle, frctAudioOut, FRAME_SIZE);
+    }
 
+     /*=============================================================================
+     | Function used for recording the input signal, a snapshot of the frame
+     | is stored inside the frctAudioOut array, this is done five times as that
+     | was the largest possible size for frctAudioOut array as anything larger would
+     | lead to exhausting the memory, the function records correctly but the recording
+     | is not long enough, hence the code was retired as it requires more work.
+     *===========================================================================*/
+    void startRecording() {
+        if (firstPartExecutedDecision == 0) {
+            int i = 0;
 
-        //        int i=0;
-        //        for(i; i<FRAME_SIZE; i++){
-        //            frctAudioIn[i] = frctAudioIn[i]*0.5;
-        //        }
+            for (i; i < FRAME_SIZE; i++) {
+                frctAudioOut[i] = frctAudioIn[i]*0.5;
+            }
+            firstPartExecutedDecision = 1;
+        }
 
-        //        if(CheckSwitchS2() == PRESSED){
-        //            while(OCPWMIsBusy(pOCPWMHandle));	
-        //            OCPWMWrite (pOCPWMHandle,frctAudioOut,FRAME_SIZE);
-        //        }
+        if (firstPartExecutedDecision == 1) {
+            int i = FRAME_SIZE;
+            int iFrameSize = 0;
+            for (i; i < (FRAME_SIZE)*2; i++) {
+                frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                iFrameSize++;
+            }
+            firstPartExecutedDecision = 2;
+        }
+
+        if (firstPartExecutedDecision == 2) {
+            int i = (FRAME_SIZE)*2;
+            int iFrameSize = 0;
+            for (i; i < (FRAME_SIZE)*3; i++) {
+                frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                iFrameSize++;
+            }
+            firstPartExecutedDecision = 3;
+        }
+
+        if (firstPartExecutedDecision == 3) {
+            int i = (FRAME_SIZE)*3;
+            int iFrameSize = 0;
+            for (i; i < (FRAME_SIZE)*4; i++) {
+                frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                iFrameSize++;
+            }
+            firstPartExecutedDecision = 4;
+        }
+
+        if (firstPartExecutedDecision == 4) {
+            int i = (FRAME_SIZE)*4;
+            int iFrameSize = 0;
+            for (i; i < (FRAME_SIZE)*5; i++) {
+                frctAudioOut[i] = frctAudioIn[iFrameSize]*0.5;
+                iFrameSize++;
+            }
+            firstPartExecutedDecision = -1;
+            switchState = 1;
+        }
+    }
+    /*=============================================================================
+     | Function used to generate the pure signal using the createSimpleSignal()
+     | function available in the modulate.h header - this function uses the peak
+     | frequency handed through the parameter call to decide what signal to generate.
+     | The output signal is stored inside the frctAudioOut array which is then
+     | later used for the OCPWMWrite() function to output the sound.
+     *===========================================================================*/
+    void playPureSignal(int peakFrequency) {
+        int simpleSignalFrequency = 0;
+        if (peakFrequency <= 1600) {
+            simpleSignalFrequency = 500;
+            createSimpleSignal(simpleSignalFrequency, FRAME_SIZE, frctAudioOut);
+        } else if (peakFrequency <= 2400) {
+            simpleSignalFrequency = 800;
+            createSimpleSignal(simpleSignalFrequency, FRAME_SIZE, frctAudioOut);
+        } else if (peakFrequency <= 3200) {
+            simpleSignalFrequency = 1000;
+            createSimpleSignal(simpleSignalFrequency, FRAME_SIZE, frctAudioOut);
+        } else if (peakFrequency <= 4000) {
+            simpleSignalFrequency = 1500;
+            createSimpleSignal(simpleSignalFrequency, FRAME_SIZE, frctAudioOut);
+        }
     }
 }
